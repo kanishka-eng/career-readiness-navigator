@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 
 st.set_page_config(page_title="Career Readiness Navigator", page_icon="🚀", layout="wide")
 
-# ---------- STYLE ----------
+# This code is to create style for our entrance page
 st.markdown("""
 <style>
 .stApp {background: radial-gradient(circle at top left,#21124d 0%,#090b18 45%,#05060c 100%); color:#fff;}
@@ -52,7 +52,7 @@ if "messages" not in st.session_state: st.session_state.messages = []
 
 st.markdown('<div class="hero"><div class="big">🚀 Career Readiness Navigator</div><p style="font-size:19px">Turn your current skills into a career-ready roadmap.</p><span class="pill">🤖 AI Agents</span><span class="pill">⚡ XP</span><span class="pill">🏆 Badges</span><span class="pill">🎯 Personalized</span></div>', unsafe_allow_html=True)
 
-# ---------- PROFILE ----------
+#This code is for the user profile section
 st.subheader("👤 1. Build Your Student Profile")
 c1,c2,c3 = st.columns(3)
 with c1: name = st.text_input("Your name", placeholder="Enter your name")
@@ -70,7 +70,7 @@ else:
 
 st.info(f"{persona} mode activated for age {age}. Your challenges and encouragement are personalized.")
 
-# ---------- SKILLS ----------
+# This code is for the skill assessment section
 st.subheader("🧠 2. Skill Assessment")
 skills = {}
 cols = st.columns(2)
@@ -113,7 +113,7 @@ if st.session_state.get("analysis_done"):
         else:
             st.success(f"🔥 {skill}: MAXED OUT!")
 
-    # ---------- QUESTS ----------
+# This code is for the daily career quests section
     st.subheader("🎮 3. Daily Career Quests")
     for skill,gap in gaps[:3]:
         if gap == 0: continue
@@ -127,7 +127,7 @@ if st.session_state.get("analysis_done"):
                 time.sleep(.2)
                 st.rerun()
 
-    # ---------- BADGES ----------
+# This code is for the user progress section
     st.subheader("🏆 Your Progress")
     xp = st.session_state.xp
     badges = []
@@ -138,7 +138,7 @@ if st.session_state.get("analysis_done"):
     if not badges: badges = ["🔒 Complete your first quest"]
     st.markdown(" ".join(f'<span class="pill">{b}</span>' for b in badges), unsafe_allow_html=True)
 
-# ---------- AGENTS ----------
+# This code is for the AI career agents section
 st.subheader("🤖 4. AI Career Agents")
 agent = st.selectbox("Choose your agent", ["🎯 Career Coach","🧑‍💼 Interview Coach","📚 Study Planner","📄 Resume Coach"])
 
@@ -163,7 +163,4 @@ if prompt:
     st.session_state.messages.append({"role":"assistant","content":answer})
     st.rerun()
 
-# ---------- FOOTER ----------
 st.markdown("---")
-st.caption("🏆 Hackathon Demo • Personalized career readiness • Gamification • Agent-style coaching")
-cd
